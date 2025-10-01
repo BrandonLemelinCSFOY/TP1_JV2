@@ -5,9 +5,13 @@ using UnityEngine.InputSystem;
 public class SpaceMarine : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] private float speed = 10f;
-    [SerializeField] private float rotationSpeed = 0.1f;
-    [SerializeField] private float jumpForce = 3f;
+    [SerializeField] private float speed = 25f;
+    [SerializeField] private float rotationSpeed = 30f;
+    [SerializeField] private float jumpForce = 10f;
+    private int healthPoints = 50;
+    [SerializeField] private int maxHealthPoints = 100;
+    private float remainingInvulnerabilityTime;
+    [SerializeField] private float invulnerabilityTime = 1.5f;
 
     [Header("Inputs")]
     [SerializeField] private InputActionReference moveAction;

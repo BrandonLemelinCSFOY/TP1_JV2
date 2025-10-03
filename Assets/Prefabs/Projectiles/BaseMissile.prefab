@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5786539454354283908}
+  - component: {fileID: -4130444166796027296}
   m_Layer: 0
   m_Name: BaseMissile
   m_TagString: Untagged
@@ -33,6 +34,20 @@ Transform:
   - {fileID: 5236975404595866831}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-4130444166796027296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6235572354152515170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f14864c05c245598289bb4d9847d0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Missile
+  speed: 200
+  damage: 10
 --- !u!1 &7756744162128602674
 GameObject:
   m_ObjectHideFlags: 0

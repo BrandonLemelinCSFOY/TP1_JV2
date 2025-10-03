@@ -1,9 +1,5 @@
 using UnityEngine;
 
-namespace Collectible
+public class Armor : MonoBehaviour
 {
-    public class Armor : MonoBehaviour
-    {
-        
-    }
 }

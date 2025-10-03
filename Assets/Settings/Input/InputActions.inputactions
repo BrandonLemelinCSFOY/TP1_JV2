@@ -50,6 +50,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Camera type change",
+                    "type": "Button",
+                    "id": "3a6ce880-b7d2-4836-a7c1-fdd43952b86b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -204,6 +213,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Missile",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f7e75d12-4303-4907-bbe9-7d69a168d5cb",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Camera type change",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

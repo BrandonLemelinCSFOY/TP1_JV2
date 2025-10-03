@@ -2846,6 +2846,7 @@ MonoBehaviour:
     type: 3}
   cameraAction: {fileID: -374433205859614582, guid: 04cc15706f63de54b99fedd88a3cbe71,
     type: 3}
+  projectileSpawnPoint: {fileID: 2138281253792839802}
 --- !u!143 &6318150114387481108
 CharacterController:
   m_ObjectHideFlags: 0

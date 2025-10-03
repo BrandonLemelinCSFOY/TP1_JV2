@@ -17,6 +17,9 @@ public class SpaceMarine : MonoBehaviour
     [SerializeField] private InputActionReference jumpAction;
     [SerializeField] private InputActionReference cameraAction;
     
+    [Header("Firing")]
+    [SerializeField] private GameObject projectileSpawnPoint;
+    
     private int healthPoints = 50;
     private float remainingInvulnerabilityTime;
     private CharacterController characterController;
@@ -115,5 +118,11 @@ public class SpaceMarine : MonoBehaviour
 
         // Appliquer le mouvement.
         characterController.Move(horizontalMovement + verticalMovement);
+    }
+    
+    public void Fire()
+    {
+        // WHY IS IT NOT WORKING ????
+        //ObjectPools.Projectile.Place(projectileSpawnPoint.transform);
     }
 }

@@ -18,9 +18,6 @@ public class ObjectPools : MonoBehaviour
     // Entities
     public ObjectPool Alien => alien;
 	public ObjectPool Portal => portal;
-    
-    // Projectiles & Missiles
-    public ObjectPool Projectile => projectile;
 
     // Fx
     public ObjectPool AlienExplosion => alienExplosion;

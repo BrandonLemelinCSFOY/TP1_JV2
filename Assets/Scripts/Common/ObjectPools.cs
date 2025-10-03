@@ -16,10 +16,20 @@ public class ObjectPools : MonoBehaviour
 
     // Entities
     public ObjectPool Alien => alien;
-    
-    // Projectiles & Missiles
-    public ObjectPool Projectile => projectile;
 
     // Fx
     public ObjectPool AlienExplosion => alienExplosion;
+    
+    private static ObjectPools instance;
+    private static ObjectPools Instance
+    {
+        get
+        {
+            if (instance == null) instance = GameObject.FindWithTag("ObjectPools").GetComponent<ObjectPools>();
+            return instance;
+        }
+    }
+    
+    // Projectiles & Missiles
+    public static ObjectPool Projectile => Instance.projectile;
 }

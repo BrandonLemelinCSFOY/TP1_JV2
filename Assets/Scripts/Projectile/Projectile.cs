@@ -22,5 +22,6 @@ public class Projectile : MonoBehaviour
     {
         var hurtable = other.gameObject.GetComponent<IHurtable>();
         if (hurtable != null) hurtable.Hurt();
+        ObjectPools.Projectile.Release(this);
     }
 }

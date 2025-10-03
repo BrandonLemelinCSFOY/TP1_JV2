@@ -59,18 +59,21 @@ public class SpaceMarine : MonoBehaviour
             var lookRotation = Quaternion.LookRotation(moveDirection);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
         }
+        
         // ALTERNATIVE POUR CAMERA FOLLOW
+        #region Camera rotation follow
         /*
-        var cameraForward = cameraTransform.forward;
-        cameraForward.y = 0;
-        cameraForward.Normalize();
-
-        if (cameraForward != Vector3.zero)
-        {
-            var targetRotation = Quaternion.LookRotation(cameraForward);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        }
-        */
+                var cameraForward = cameraTransform.forward;
+                cameraForward.y = 0;
+                cameraForward.Normalize();
+        
+                if (cameraForward != Vector3.zero)
+                {
+                    var targetRotation = Quaternion.LookRotation(cameraForward);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+                }
+                */
+        #endregion
         
         // Partie sur le saut.
         var gravity = Physics.gravity;

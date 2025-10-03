@@ -2844,6 +2844,8 @@ MonoBehaviour:
     type: 3}
   jumpAction: {fileID: -2800840872364817712, guid: 04cc15706f63de54b99fedd88a3cbe71,
     type: 3}
+  cameraAction: {fileID: -374433205859614582, guid: 04cc15706f63de54b99fedd88a3cbe71,
+    type: 3}
 --- !u!143 &6318150114387481108
 CharacterController:
   m_ObjectHideFlags: 0

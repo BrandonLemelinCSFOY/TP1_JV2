@@ -15,11 +15,13 @@ public class SpaceMarine : MonoBehaviour
     [Header("Inputs")]
     [SerializeField] private InputActionReference moveAction;
     [SerializeField] private InputActionReference jumpAction;
+    [SerializeField] private InputActionReference cameraAction;
     
     private int healthPoints = 50;
     private float remainingInvulnerabilityTime;
     private CharacterController characterController;
     private float verticalVelocity;
+    private bool followCamera = false;
 
     private void Awake()
     {
@@ -35,6 +37,11 @@ public class SpaceMarine : MonoBehaviour
         var up = cameraTransform.up;
         var forward = cameraTransform.forward;
         var right = cameraTransform.right;
+
+        if (cameraAction.action.triggered)
+        {
+            followCamera = !followCamera;
+        }
         
         // Retirer la rotation Y (garder le mouvement horizontal).
         forward.y = 0;
@@ -55,24 +62,31 @@ public class SpaceMarine : MonoBehaviour
             var moveDirection = forward * moveInput.y + right * moveInput.x;
             horizontalMovement = moveDirection * (speed * Time.deltaTime);
             
-            // Rotate player using current direction.
-            var lookRotation = Quaternion.LookRotation(moveDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
+            if (!followCamera)
+            {
+                // Rotate player using current direction.
+                var lookRotation = Quaternion.LookRotation(moveDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
+            }
         }
         
         // ALTERNATIVE POUR CAMERA FOLLOW
         #region Camera rotation follow
-        /*
-                var cameraForward = cameraTransform.forward;
-                cameraForward.y = 0;
-                cameraForward.Normalize();
+
+        if (followCamera)
+        {
         
-                if (cameraForward != Vector3.zero)
-                {
-                    var targetRotation = Quaternion.LookRotation(cameraForward);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-                }
-                */
+            var cameraForward = cameraTransform.forward;
+            cameraForward.y = 0;
+            cameraForward.Normalize();
+    
+            if (cameraForward != Vector3.zero)
+            {
+                var targetRotation = Quaternion.LookRotation(cameraForward);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            }    
+        }
+                
         #endregion
         
         // Partie sur le saut.

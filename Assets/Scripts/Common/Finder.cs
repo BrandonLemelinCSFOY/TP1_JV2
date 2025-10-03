@@ -4,6 +4,7 @@
 //        Basez-vous sur le code existant.
 public static class Finder
 {
+    private static GameObject gameControllerObject;
     private static EventChannels eventChannels;
     private static ObjectPools objectPools;
 
@@ -24,6 +25,16 @@ public static class Finder
             if (objectPools == null)
                 objectPools = FindWithTag<ObjectPools>("GameController");
             return objectPools;
+        }
+    }
+    
+    private static GameObject GameControllerObject
+    {
+        get
+        {
+            if (gameControllerObject == null)
+                gameControllerObject = GameObject.FindWithTag("GameController");
+            return gameControllerObject;
         }
     }
 

@@ -1,4 +1,5 @@
 using System;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,15 +9,15 @@ public class SpaceMarine : MonoBehaviour
     [SerializeField] private float speed = 25f;
     [SerializeField] private float rotationSpeed = 30f;
     [SerializeField] private float jumpForce = 10f;
-    private int healthPoints = 50;
+    [Header("Infos")]
     [SerializeField] private int maxHealthPoints = 100;
-    private float remainingInvulnerabilityTime;
     [SerializeField] private float invulnerabilityTime = 1.5f;
-
     [Header("Inputs")]
     [SerializeField] private InputActionReference moveAction;
     [SerializeField] private InputActionReference jumpAction;
     
+    private int healthPoints = 50;
+    private float remainingInvulnerabilityTime;
     private CharacterController characterController;
     private float verticalVelocity;
 
@@ -58,6 +59,18 @@ public class SpaceMarine : MonoBehaviour
             var lookRotation = Quaternion.LookRotation(moveDirection);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
         }
+        // ALTERNATIVE POUR CAMERA FOLLOW
+        /*
+        var cameraForward = cameraTransform.forward;
+        cameraForward.y = 0;
+        cameraForward.Normalize();
+
+        if (cameraForward != Vector3.zero)
+        {
+            var targetRotation = Quaternion.LookRotation(cameraForward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
+        */
         
         // Partie sur le saut.
         var gravity = Physics.gravity;

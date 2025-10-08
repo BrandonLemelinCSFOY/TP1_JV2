@@ -16,6 +16,8 @@ public class SpaceMarine : MonoBehaviour
     [SerializeField] private InputActionReference moveAction;
     [SerializeField] private InputActionReference jumpAction;
     [SerializeField] private InputActionReference cameraAction;
+    [SerializeField] private InputActionReference projectileAction;
+    [SerializeField] private InputActionReference missileAction;
     
     [Header("Firing")]
     [SerializeField] private GameObject projectileSpawnPoint;
@@ -53,6 +55,8 @@ public class SpaceMarine : MonoBehaviour
         // Lire les entrées du joueur.
         var moveInput = moveAction.action.ReadValue<Vector2>();
         var jumpInput = jumpAction.action.triggered;
+        var projectileInput = projectileAction.action.triggered;
+        var missileInput = missileAction.action.triggered;
 
         var horizontalMovement = Vector3.zero;
         
@@ -118,11 +122,16 @@ public class SpaceMarine : MonoBehaviour
 
         // Appliquer le mouvement.
         characterController.Move(horizontalMovement + verticalMovement);
+        
+        // Gérer le input de tir.
+        if (projectileInput)
+        {
+            Fire();
+        }
     }
     
     public void Fire()
     {
-        // WHY IS IT NOT WORKING ????
-        //ObjectPools.Projectile.Place(projectileSpawnPoint.transform);
+        Finder.ObjectPools.Projectile.Place(projectileSpawnPoint.transform.position);
     }
 }

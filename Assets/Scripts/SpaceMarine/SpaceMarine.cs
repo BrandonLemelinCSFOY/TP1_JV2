@@ -132,6 +132,6 @@ public class SpaceMarine : MonoBehaviour
     
     public void Fire()
     {
-        Finder.ObjectPools.Projectile.Place(projectileSpawnPoint.transform.position);
+        Finder.ObjectPools.Projectile.Place(projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
     }
 }

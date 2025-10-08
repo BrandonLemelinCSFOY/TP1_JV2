@@ -123,15 +123,25 @@ public class SpaceMarine : MonoBehaviour
         // Appliquer le mouvement.
         characterController.Move(horizontalMovement + verticalMovement);
         
-        // Gérer le input de tir.
+        // Gérer les inputs de tir.
         if (projectileInput)
         {
-            Fire();
+            FireProjectile();
+        }
+
+        if (missileInput)
+        {
+            FireMissile();
         }
     }
     
-    public void Fire()
+    private void FireProjectile()
     {
         Finder.ObjectPools.Projectile.Place(projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
+    }
+
+    private void FireMissile()
+    {
+        Finder.ObjectPools.Missile.Place(projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
     }
 }

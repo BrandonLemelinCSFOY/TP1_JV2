@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5786539454354283908}
   - component: {fileID: -4130444166796027296}
+  - component: {fileID: -8046837461449504945}
   m_Layer: 0
   m_Name: BaseMissile
   m_TagString: Untagged
@@ -46,8 +47,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f14864c05c245598289bb4d9847d0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Missile
-  speed: 200
+  forwardSpeed: 200
   damage: 10
+--- !u!54 &-8046837461449504945
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6235572354152515170}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7756744162128602674
 GameObject:
   m_ObjectHideFlags: 0

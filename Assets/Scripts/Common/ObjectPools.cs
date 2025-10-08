@@ -10,6 +10,7 @@ public class ObjectPools : MonoBehaviour
 
     [Header("Fx")]
     [SerializeField] private ObjectPool alienExplosion;
+    [SerializeField] private ObjectPool missileExplosion;
     
     [Header("Projectiles & Missiles")]
     [SerializeField] private ObjectPool projectile;
@@ -21,6 +22,7 @@ public class ObjectPools : MonoBehaviour
 
     // Fx
     public ObjectPool AlienExplosion => alienExplosion;
+    public ObjectPool MissileExplosion => missileExplosion;
     
     // Projectiles & Missiles
     public ObjectPool Projectile => projectile;

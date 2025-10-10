@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-public class Alien : MonoBehaviour
+public class Alien : MonoBehaviour, IHurtable
 {
     [SerializeField] private int health = 1;
     [SerializeField] private int damage = 10;
@@ -12,8 +12,8 @@ public class Alien : MonoBehaviour
         var hurtable = other.gameObject.GetComponent<IHurtable>();
         if (hurtable != null)
         {
-            //hurtable.Hurt();
-            health--;
+            hurtable.Hurt();
+            Hurt();
         }
     }
 
@@ -29,5 +29,10 @@ public class Alien : MonoBehaviour
         {
             Die();
         }
+    }
+
+    public void Hurt()
+    {
+        health--;
     }
 }

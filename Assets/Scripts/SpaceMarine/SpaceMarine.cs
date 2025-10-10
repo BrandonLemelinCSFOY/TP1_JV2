@@ -133,8 +133,18 @@ public class SpaceMarine : MonoBehaviour, IHurtable
         {
             FireMissile();
         }
+
+        if (healthPoints <= 0)
+        {
+            Die();
+        }
     }
-    
+
+    private void Die()
+    {
+        Destroy(gameObject);
+    }
+
     private void FireProjectile()
     {
         Finder.ObjectPools.Projectile.Place(projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
@@ -147,6 +157,6 @@ public class SpaceMarine : MonoBehaviour, IHurtable
 
     public void Hurt()
     {
-        throw new NotImplementedException();
+        healthPoints -= 10;
     }
 }

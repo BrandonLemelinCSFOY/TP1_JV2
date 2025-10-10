@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 public class Alien : MonoBehaviour
 {
@@ -5,4 +6,28 @@ public class Alien : MonoBehaviour
     [SerializeField] private int damage = 10;
     [SerializeField] private int moveSpeed = 10;
     [SerializeField] private int rotationSpeed = 120;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var hurtable = other.gameObject.GetComponent<IHurtable>();
+        if (hurtable != null)
+        {
+            //hurtable.Hurt();
+            health--;
+        }
+    }
+
+    private void Die()
+    {
+        ObjectPools.AlienExplosion.Place(transform.position);
+        Destroy(gameObject);
+    }
+
+    private void Update()
+    {
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
 }

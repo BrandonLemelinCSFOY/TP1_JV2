@@ -3,7 +3,7 @@ using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class SpaceMarine : MonoBehaviour
+public class SpaceMarine : MonoBehaviour, IHurtable
 {
     [Header("Movement")]
     [SerializeField] private float speed = 25f;
@@ -143,5 +143,10 @@ public class SpaceMarine : MonoBehaviour
     private void FireMissile()
     {
         Finder.ObjectPools.Missile.Place(projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
+    }
+
+    public void Hurt()
+    {
+        throw new NotImplementedException();
     }
 }

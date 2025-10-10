@@ -19,7 +19,7 @@ public class Alien : MonoBehaviour
 
     private void Die()
     {
-        ObjectPools.AlienExplosion.Place(transform.position);
+        Finder.ObjectPools.AlienExplosion.Place(transform.position);
         Destroy(gameObject);
     }
 

@@ -1,6 +1,6 @@
 using System;
-using Unity.Cinemachine;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.InputSystem;
 
 public class SpaceMarine : MonoBehaviour, IHurtable
@@ -27,11 +27,18 @@ public class SpaceMarine : MonoBehaviour, IHurtable
     private CharacterController characterController;
     private float verticalVelocity;
     private bool followCamera = false;
+    private bool becomeInvulnerable = false;
 
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
         characterController = GetComponent<CharacterController>();
+        remainingInvulnerabilityTime = 0f;
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(CountdownRoutine());
     }
 
     private void Update()
@@ -138,6 +145,28 @@ public class SpaceMarine : MonoBehaviour, IHurtable
         {
             Die();
         }
+
+        UpdateInvulnerability();
+    }
+
+    private void UpdateInvulnerability()
+    {
+        if (becomeInvulnerable)
+        {
+            becomeInvulnerable = false;
+            remainingInvulnerabilityTime = invulnerabilityTime;
+        }
+    }
+
+    private IEnumerator CountdownRoutine()
+    {
+        var delay = new WaitForSeconds(invulnerabilityTime);
+        while (remainingInvulnerabilityTime > 0)
+        {
+            Debug.Log(remainingInvulnerabilityTime);
+            remainingInvulnerabilityTime -= invulnerabilityTime;
+            yield return delay;
+        }
     }
 
     private void Die()
@@ -157,6 +186,15 @@ public class SpaceMarine : MonoBehaviour, IHurtable
 
     public void Hurt(int damage)
     {
-        healthPoints -= damage;
+        if (remainingInvulnerabilityTime <= 0)
+        {
+            healthPoints -= damage;
+            becomeInvulnerable = true;
+        } else if (remainingInvulnerabilityTime > 0)
+        {
+            return;
+        }
     }
+
+
 }

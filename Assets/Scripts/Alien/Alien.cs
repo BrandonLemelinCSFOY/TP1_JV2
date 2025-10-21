@@ -11,14 +11,15 @@ public class Alien : MonoBehaviour, IHurtable
     private void OnTriggerEnter(Collider other)
     {
         var hurtable = other.gameObject.GetComponent<IHurtable>();
+        var player = other.gameObject.GetComponent<SpaceMarine>();
         var portal = other.gameObject.GetComponent<Portal>();
         if (portal != null)
         {
             return;
         }
-        if (hurtable != null)
+        if (player != null)
         {
-            hurtable.Hurt(damage);
+            player.Hurt(damage);
             Hurt(health);
         }
     }
@@ -27,7 +28,8 @@ public class Alien : MonoBehaviour, IHurtable
     {
         Finder.ObjectPools.AlienExplosion.Place(transform.position);
         Finder.GlobalAudioSource.PlayOneShot(audioClip);
-        Destroy(gameObject);
+        health = 1;
+        Finder.ObjectPools.Alien.Release(this);
     }
 
     private void Update()

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GlobalAudioSource
   - ObjectPools
+  - Portal
   layers:
   - Default
   - TransparentFX

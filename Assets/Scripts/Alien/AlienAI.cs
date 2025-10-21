@@ -4,7 +4,6 @@ using UnityEngine.AI;
 
 public class AlienAI : MonoBehaviour
 {
-    [SerializeField] GameObject destination;
     private NavMeshAgent agent;
 
     private void Awake()
@@ -14,6 +13,6 @@ public class AlienAI : MonoBehaviour
 
     private void Update()
     {
-        agent.destination = destination.transform.position;
+        agent.destination = GameObject.FindWithTag("Player").transform.position;
     }
 }

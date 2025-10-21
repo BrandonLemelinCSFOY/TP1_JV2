@@ -653,7 +653,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 359069cc8e3f99f4c8e53b496f1ede38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AlienAI
-  destination: {fileID: 0}
+  destination: {fileID: 4830989730569662612, guid: 31e337986b2f5af46b6bdb2f844b245b,
+    type: 3}
 --- !u!114 &1360859360971057201
 MonoBehaviour:
   m_ObjectHideFlags: 0

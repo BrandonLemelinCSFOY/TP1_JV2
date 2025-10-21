@@ -3,7 +3,7 @@ using UnityEngine;
 public class MissileAOE : MonoBehaviour
 {
     [SerializeField] private float explosionRadius = 5f;
-    [SerializeField] private int explosionDamage = 25;
+    [SerializeField] private int explosionDamage = 10;
     [SerializeField] private float explosionDuration = 0.1f;
     [SerializeField] private LayerMask damageableLayers = -1;
     
@@ -34,7 +34,7 @@ public class MissileAOE : MonoBehaviour
             IHurtable hurtable = hitCollider.GetComponent<IHurtable>();
             if (hurtable != null)
             {
-                hurtable.Hurt();
+                hurtable.Hurt(explosionDamage);
             }
         }
     }

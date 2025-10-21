@@ -18,8 +18,8 @@ public class Alien : MonoBehaviour, IHurtable
         }
         if (hurtable != null)
         {
-            hurtable.Hurt();
-            Hurt();
+            hurtable.Hurt(damage);
+            Hurt(health);
         }
     }
 
@@ -38,8 +38,8 @@ public class Alien : MonoBehaviour, IHurtable
         }
     }
 
-    public void Hurt()
+    public void Hurt(int damage)
     {
-        health--;
+        health -= damage;
     }
 }

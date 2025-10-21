@@ -35,8 +35,8 @@ public class Portal : MonoBehaviour, IHurtable
             Die();
         }
     }
-    public void Hurt()
+    public void Hurt(int damage)
     {
-        health--;
+        health -= damage;
     }
 }

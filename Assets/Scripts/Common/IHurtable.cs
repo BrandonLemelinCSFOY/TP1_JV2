@@ -1,4 +1,4 @@
 ﻿public interface IHurtable
 {
-    void Hurt();
+    void Hurt(int damage);
 }

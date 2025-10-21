@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var hurtable = other.gameObject.GetComponent<IHurtable>();
-        if (hurtable != null) hurtable.Hurt();
+        if (hurtable != null) hurtable.Hurt(damage);
         Finder.ObjectPools.Projectile.Release(this);
     }
 }

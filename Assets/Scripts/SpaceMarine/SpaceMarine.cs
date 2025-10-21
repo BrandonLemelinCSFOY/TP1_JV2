@@ -155,8 +155,8 @@ public class SpaceMarine : MonoBehaviour, IHurtable
         Finder.ObjectPools.Missile.Place(projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
     }
 
-    public void Hurt()
+    public void Hurt(int damage)
     {
-        healthPoints -= 10;
+        healthPoints -= damage;
     }
 }

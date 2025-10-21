@@ -4,9 +4,20 @@
 //        Basez-vous sur le code existant.
 public static class Finder
 {
-    private static GameObject gameControllerObject;
     private static EventChannels eventChannels;
     private static ObjectPools objectPools;
+    private static AudioSource globalAudioSource;
+    private static GameObject globalAudioSourceObject;
+    
+    public static AudioSource GlobalAudioSource
+    {
+        get
+        {
+            if (globalAudioSource == null)
+                globalAudioSource = GlobalAudioSourceObject.AddComponent<AudioSource>();
+            return globalAudioSource;
+        }
+    }
 
     public static EventChannels EventChannels
     {
@@ -27,21 +38,21 @@ public static class Finder
             return objectPools;
         }
     }
-    
-    private static GameObject GameControllerObject
-    {
-        get
-        {
-            if (gameControllerObject == null)
-                gameControllerObject = GameObject.FindWithTag("GameController");
-            return gameControllerObject;
-        }
-    }
 
     private static T FindWithTag<T>(string tag) where T : class
     {
         var gameObject = GameObject.FindWithTag(tag);
         if (gameObject == null) return null;
         return gameObject.GetComponent<T>();
+    }
+    
+    private static GameObject GlobalAudioSourceObject
+    {
+        get
+        {
+            if (globalAudioSourceObject == null)
+                globalAudioSourceObject = new GameObject { name = "GlobalAudioSource" };
+            return globalAudioSourceObject;
+        }
     }
 }

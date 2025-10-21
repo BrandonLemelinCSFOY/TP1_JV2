@@ -529,6 +529,7 @@ GameObject:
   - component: {fileID: 6449396077065559952}
   - component: {fileID: 3274945657921855996}
   - component: {fileID: 1360859360971057201}
+  - component: {fileID: 7496234855347686206}
   m_Layer: 0
   m_Name: Alien
   m_TagString: Untagged
@@ -665,10 +666,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8601122e33194332882aaa04586d7cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Alien
+  audioClip: {fileID: 8300000, guid: 8f252cb39a2a2da44aefd3d09599af53, type: 3}
   health: 1
   damage: 10
   moveSpeed: 10
   rotationSpeed: 120
+--- !u!136 &7496234855347686206
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594268643789065094}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Height: 7
+  m_Direction: 1
+  m_Center: {x: 0, y: 3.5, z: 0}
 --- !u!1 &2168962606728071003
 GameObject:
   m_ObjectHideFlags: 0

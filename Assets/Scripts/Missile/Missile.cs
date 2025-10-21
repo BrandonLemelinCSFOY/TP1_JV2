@@ -4,6 +4,7 @@ public class Missile : MonoBehaviour
 {
     [SerializeField] private float forwardSpeed = 200f;
     [SerializeField] private int damage = 10;
+    [SerializeField] private float explosionRadius = 20f;
     
     private new Rigidbody rigidbody;
 
@@ -19,8 +20,16 @@ public class Missile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var hurtable = other.gameObject.GetComponent<IHurtable>();
-        if (hurtable != null) hurtable.Hurt();
+        Vector3 explosionPosition = transform.position;
+        
+        var explosionEffect = Finder.ObjectPools.MissileExplosion.Get();
+        explosionEffect.transform.position = explosionPosition;
+        
+        
+        GameObject aoeObject = new GameObject("MissileAOE");
+        MissileAOE aoeComponent = aoeObject.AddComponent<MissileAOE>();
+        aoeComponent.Explode(explosionPosition);
+        
         Finder.ObjectPools.Projectile.Release(this);
     }
 }

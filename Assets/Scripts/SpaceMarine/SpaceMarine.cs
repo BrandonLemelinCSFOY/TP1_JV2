@@ -35,11 +35,11 @@ public class SpaceMarine : MonoBehaviour, IHurtable
         characterController = GetComponent<CharacterController>();
         remainingInvulnerabilityTime = 0f;
     }
-
+/*
     private void OnEnable()
     {
         StartCoroutine(CountdownRoutine());
-    }
+    }*/
 
     private void Update()
     {
@@ -146,9 +146,9 @@ public class SpaceMarine : MonoBehaviour, IHurtable
             Die();
         }
 
-        UpdateInvulnerability();
+        //UpdateInvulnerability();
     }
-
+/*
     private void UpdateInvulnerability()
     {
         if (becomeInvulnerable)
@@ -168,6 +168,7 @@ public class SpaceMarine : MonoBehaviour, IHurtable
             yield return delay;
         }
     }
+*/
 
     private void Die()
     {
@@ -186,14 +187,15 @@ public class SpaceMarine : MonoBehaviour, IHurtable
 
     public void Hurt(int damage)
     {
-        if (remainingInvulnerabilityTime <= 0)
+        healthPoints -= damage;
+        /*if (remainingInvulnerabilityTime <= 0)
         {
             healthPoints -= damage;
             becomeInvulnerable = true;
         } else if (remainingInvulnerabilityTime > 0)
         {
             return;
-        }
+        }*/
     }
 
 

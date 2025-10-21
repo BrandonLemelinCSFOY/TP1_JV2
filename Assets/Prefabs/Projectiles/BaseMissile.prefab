@@ -48,8 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f14864c05c245598289bb4d9847d0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Missile
+  audioClip: {fileID: 8300000, guid: a188fcd57b842ae42b8591b1a666c90f, type: 3}
   forwardSpeed: 200
   damage: 10
+  explosionRadius: 20
 --- !u!54 &-8046837461449504945
 Rigidbody:
   m_ObjectHideFlags: 0

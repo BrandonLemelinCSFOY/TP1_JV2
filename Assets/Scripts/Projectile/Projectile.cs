@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] private AudioClip audioClip;
     [SerializeField] private float forwardSpeed = 200f;
     [SerializeField] private int damage = 1;
     
@@ -11,6 +12,15 @@ public class Projectile : MonoBehaviour
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+    }
+
+    private void OnEnable()
+    {
+        // Jouer le son quand le projectile est tiré
+        if (audioClip != null)
+        {
+            Finder.GlobalAudioSource.PlayOneShot(audioClip);
+        }
     }
 
     private void FixedUpdate()

@@ -226,6 +226,17 @@
                     "action": "Camera type change",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "02484d37-1f23-4d51-8f56-cc15fb16efc4",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Camera type change",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

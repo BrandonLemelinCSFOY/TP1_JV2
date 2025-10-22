@@ -7,6 +7,8 @@ public static class Finder
     private static EventChannels eventChannels;
     private static ObjectPools objectPools;
     private static GameController gameController;
+    private static MusicController musicController;
+    private static GameStateController gameStateController;
     private static AudioSource globalAudioSource;
     private static GameObject globalAudioSourceObject;
     
@@ -47,6 +49,26 @@ public static class Finder
             if (gameController == null)
                 gameController = FindWithTag<GameController>("GameController");
             return gameController;
+        }
+    }
+
+    public static MusicController MusicController
+    {
+        get
+        {
+            if (musicController == null)
+                musicController = FindWithTag<MusicController>("GameController");
+            return musicController;
+        }
+    }
+
+    public static GameStateController GameStateController
+    {
+        get
+        {
+            if (gameStateController == null)
+                gameStateController = FindWithTag<GameStateController>("GameController");
+            return gameStateController;
         }
     }
 

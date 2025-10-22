@@ -9,9 +9,12 @@ public class Portal : MonoBehaviour, IHurtable
 
     private void Die()
     {
+        // Déclencher l'événement de destruction du portail
+        Finder.EventChannels.OnPortalDestroyed.Invoke(this);
+        
         Finder.ObjectPools.PortalExplosion.Place(transform.position);
         Finder.GlobalAudioSource.PlayOneShot(audioClip);
-        Destroy(gameObject);
+        
         var randomNumber = Random.Range(0, 3);
         var collectiblePosition = new Vector3(transform.position.x, 0, transform.position.z);
         switch (randomNumber)
@@ -26,6 +29,8 @@ public class Portal : MonoBehaviour, IHurtable
                 Finder.ObjectPools.HealthCollectible.Place(collectiblePosition);
                 break;
         }
+        
+        Destroy(gameObject);
     }
 
     private void Update()

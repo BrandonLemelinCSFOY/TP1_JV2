@@ -174,6 +174,9 @@ public class SpaceMarine : MonoBehaviour, IHurtable
 
     private void Die()
     {
+        // Déclencher l'événement de mort du joueur
+        Finder.EventChannels.OnPlayerDeath.Invoke(this);
+        
         // Jouer le son de mort
         if (deathAudioClip != null)
         {

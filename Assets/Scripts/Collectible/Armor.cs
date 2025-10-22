@@ -4,7 +4,7 @@ using System.Collections;
 public class Armor : MonoBehaviour
 {
     [SerializeField] private AudioClip audioClip;
-    [SerializeField] private float invulnerabilityDuration = 5f;
+    [SerializeField] private float invulnerabilityDuration = 5f; // 5 secondes
     [SerializeField] private float autoDestroyTime = 10f;
 
     private void OnEnable()
@@ -17,8 +17,7 @@ public class Armor : MonoBehaviour
         var spaceMarine = other.GetComponent<SpaceMarine>();
         if (spaceMarine != null)
         {
-            // TODO: Rendre le joueur invulnérable pendant 5 secondes
-            // spaceMarine.MakeInvulnerable(invulnerabilityDuration);
+            spaceMarine.MakeInvulnerable(invulnerabilityDuration);
             
             if (audioClip != null)
             {

@@ -16,13 +16,12 @@ public class Ammo : MonoBehaviour
         var spaceMarine = other.GetComponent<SpaceMarine>();
         if (spaceMarine != null)
         {
-            // Vérifier si le joueur peut ramasser des missiles (inventaire pas plein)
             if (Finder.GameController.GetCurrentMissileCount() < Finder.GameController.GetMaxMissileCount())
             {
                 for (int i = 0; i < 5; i++)
                 {
                     Finder.GameController.AddMissile();
-                    // S'arrêter si on atteint le maximum
+                    // S'arrêter si on atteint le maximum de missiles
                     if (Finder.GameController.GetCurrentMissileCount() >= Finder.GameController.GetMaxMissileCount())
                         break;
                 }

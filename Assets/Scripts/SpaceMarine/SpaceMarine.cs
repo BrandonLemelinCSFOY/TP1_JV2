@@ -39,11 +39,6 @@ public class SpaceMarine : MonoBehaviour, IHurtable
         characterController = GetComponent<CharacterController>();
         remainingInvulnerabilityTime = 0f;
     }
-/*
-    private void OnEnable()
-    {
-        StartCoroutine(CountdownRoutine());
-    }*/
 
     private void Update()
     {
@@ -150,9 +145,9 @@ public class SpaceMarine : MonoBehaviour, IHurtable
             Die();
         }
 
-        //UpdateInvulnerability();
+        UpdateInvulnerability();
     }
-/*
+
     private void UpdateInvulnerability()
     {
         if (becomeInvulnerable)
@@ -160,19 +155,22 @@ public class SpaceMarine : MonoBehaviour, IHurtable
             becomeInvulnerable = false;
             remainingInvulnerabilityTime = invulnerabilityTime;
         }
-    }
-
-    private IEnumerator CountdownRoutine()
-    {
-        var delay = new WaitForSeconds(invulnerabilityTime);
-        while (remainingInvulnerabilityTime > 0)
+        
+        if (remainingInvulnerabilityTime > 0)
         {
-            Debug.Log(remainingInvulnerabilityTime);
-            remainingInvulnerabilityTime -= invulnerabilityTime;
-            yield return delay;
+            remainingInvulnerabilityTime -= Time.deltaTime;
         }
     }
-*/
+
+    public bool IsInvulnerable()
+    {
+        return remainingInvulnerabilityTime > 0;
+    }
+
+    public void MakeInvulnerable(float duration)
+    {
+        remainingInvulnerabilityTime = duration;
+    }
 
     private void Die()
     {
@@ -192,7 +190,7 @@ public class SpaceMarine : MonoBehaviour, IHurtable
 
     private void FireMissile()
     {
-        // Vérifier si le joueur a des missiles et en consommer un
+        // Utiliser un missile seulement si le joueur en a.
         if (Finder.GameController.UseMissile())
         {
             Finder.ObjectPools.Missile.Place(projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
@@ -201,22 +199,21 @@ public class SpaceMarine : MonoBehaviour, IHurtable
 
     public void Hurt(int damage)
     {
+        // Si le joueur est invulnérable, ne pas subir de dégâts
+        if (remainingInvulnerabilityTime > 0)
+        {
+            return;
+        }
+
         healthPoints -= damage;
         
-        // Jouer le son de dégâts
         if (hurtAudioClip != null)
         {
             Finder.GlobalAudioSource.PlayOneShot(hurtAudioClip);
         }
         
-        /*if (remainingInvulnerabilityTime <= 0)
-        {
-            healthPoints -= damage;
-            becomeInvulnerable = true;
-        } else if (remainingInvulnerabilityTime > 0)
-        {
-            return;
-        }*/
+        // Devenir invulnérable après avoir subi des dégâts
+        becomeInvulnerable = true;
     }
 
     public void RestoreHealth(int amount)

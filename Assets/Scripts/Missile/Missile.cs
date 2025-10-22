@@ -23,7 +23,6 @@ public class Missile : MonoBehaviour
     {
         Vector3 explosionPosition = transform.position;
         
-        // Jouer le son d'explosion
         if (audioClip != null)
         {
             Finder.GlobalAudioSource.PlayOneShot(audioClip);
@@ -36,6 +35,6 @@ public class Missile : MonoBehaviour
         MissileAOE aoeComponent = aoeObject.AddComponent<MissileAOE>();
         aoeComponent.Explode(explosionPosition);
         
-        Finder.ObjectPools.Projectile.Release(this);
+        Finder.ObjectPools.Missile.Release(this);
     }
 }

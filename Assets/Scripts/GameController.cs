@@ -6,8 +6,17 @@ using Random = UnityEngine.Random;
 public class GameController : MonoBehaviour
 {
     [SerializeField] private float alienSpawnTime = 0.5f;
+    [Header("Missiles")]
+    [SerializeField] private int initialMissileCount = 0;
+    [SerializeField] private int maxMissileCount = 10;
     
     private float remainingAlienSpawnTime = 0.5f;
+    private int currentMissileCount;
+
+    private void Start()
+    {
+        currentMissileCount = initialMissileCount;
+    }
 
     private void Update()
     {
@@ -46,5 +55,39 @@ public class GameController : MonoBehaviour
             }
             
         }
+    }
+
+    // Méthodes pour la gestion des missiles
+    public bool HasMissiles()
+    {
+        return currentMissileCount > 0;
+    }
+
+    public bool UseMissile()
+    {
+        if (currentMissileCount > 0)
+        {
+            currentMissileCount--;
+            return true;
+        }
+        return false;
+    }
+
+    public void AddMissile()
+    {
+        if (currentMissileCount < maxMissileCount)
+        {
+            currentMissileCount++;
+        }
+    }
+
+    public int GetCurrentMissileCount()
+    {
+        return currentMissileCount;
+    }
+
+    public int GetMaxMissileCount()
+    {
+        return maxMissileCount;
     }
 }

@@ -16,7 +16,6 @@ public class Projectile : MonoBehaviour
 
     private void OnEnable()
     {
-        // Jouer le son quand le projectile est tiré
         if (audioClip != null)
         {
             Finder.GlobalAudioSource.PlayOneShot(audioClip);

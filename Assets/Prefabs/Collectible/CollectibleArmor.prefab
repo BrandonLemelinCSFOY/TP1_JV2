@@ -531,8 +531,33 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7627524841244000393}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2469668914405986032, guid: 03bbfab88ae8ef44b8eb95f695b66856,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1592363868305038262}
   m_SourcePrefab: {fileID: 100100000, guid: 03bbfab88ae8ef44b8eb95f695b66856, type: 3}
+--- !u!1 &1973904959589787284 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2469668914405986032, guid: 03bbfab88ae8ef44b8eb95f695b66856,
+    type: 3}
+  m_PrefabInstance: {fileID: 4117062812940200036}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-1592363868305038262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973904959589787284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f1906e2ce74543a44638b4b16e177e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Armor
+  audioClip: {fileID: 8300000, guid: 55bc10006917fbe46a89f70a93cd4e1f, type: 3}
+  invulnerabilityDuration: 5
+  autoDestroyTime: 10
 --- !u!4 &7411532081775876908 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6915756588001981256, guid: 03bbfab88ae8ef44b8eb95f695b66856,

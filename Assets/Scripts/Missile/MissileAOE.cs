@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MissileAOE : MonoBehaviour
 {
-    [SerializeField] private float explosionRadius = 5f;
+    [SerializeField] private float explosionRadius = 20f;
     [SerializeField] private int explosionDamage = 10;
     [SerializeField] private float explosionDuration = 0.1f;
     [SerializeField] private LayerMask damageableLayers = -1;

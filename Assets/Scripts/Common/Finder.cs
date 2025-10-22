@@ -6,6 +6,7 @@ public static class Finder
 {
     private static EventChannels eventChannels;
     private static ObjectPools objectPools;
+    private static GameController gameController;
     private static AudioSource globalAudioSource;
     private static GameObject globalAudioSourceObject;
     
@@ -36,6 +37,16 @@ public static class Finder
             if (objectPools == null)
                 objectPools = FindWithTag<ObjectPools>("GameController");
             return objectPools;
+        }
+    }
+
+    public static GameController GameController
+    {
+        get
+        {
+            if (gameController == null)
+                gameController = FindWithTag<GameController>("GameController");
+            return gameController;
         }
     }
 

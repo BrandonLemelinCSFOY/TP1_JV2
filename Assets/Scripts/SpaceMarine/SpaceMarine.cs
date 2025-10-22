@@ -22,6 +22,10 @@ public class SpaceMarine : MonoBehaviour, IHurtable
     [Header("Firing")]
     [SerializeField] private GameObject projectileSpawnPoint;
     
+    [Header("Audio")]
+    [SerializeField] private AudioClip hurtAudioClip;
+    [SerializeField] private AudioClip deathAudioClip;
+    
     private int healthPoints = 50;
     private float remainingInvulnerabilityTime;
     private CharacterController characterController;
@@ -172,6 +176,12 @@ public class SpaceMarine : MonoBehaviour, IHurtable
 
     private void Die()
     {
+        // Jouer le son de mort
+        if (deathAudioClip != null)
+        {
+            Finder.GlobalAudioSource.PlayOneShot(deathAudioClip);
+        }
+        
         Destroy(gameObject);
     }
 
@@ -182,12 +192,23 @@ public class SpaceMarine : MonoBehaviour, IHurtable
 
     private void FireMissile()
     {
-        Finder.ObjectPools.Missile.Place(projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
+        // Vérifier si le joueur a des missiles et en consommer un
+        if (Finder.GameController.UseMissile())
+        {
+            Finder.ObjectPools.Missile.Place(projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.rotation);
+        }
     }
 
     public void Hurt(int damage)
     {
         healthPoints -= damage;
+        
+        // Jouer le son de dégâts
+        if (hurtAudioClip != null)
+        {
+            Finder.GlobalAudioSource.PlayOneShot(hurtAudioClip);
+        }
+        
         /*if (remainingInvulnerabilityTime <= 0)
         {
             healthPoints -= damage;
@@ -196,6 +217,21 @@ public class SpaceMarine : MonoBehaviour, IHurtable
         {
             return;
         }*/
+    }
+
+    public void RestoreHealth(int amount)
+    {
+        healthPoints += amount;
+        // S'assurer que la santé ne dépasse pas le maximum
+        if (healthPoints > maxHealthPoints)
+        {
+            healthPoints = maxHealthPoints;
+        }
+    }
+
+    public int GetCurrentHealth()
+    {
+        return healthPoints;
     }
 
 

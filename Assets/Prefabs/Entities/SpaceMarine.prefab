@@ -2851,6 +2851,8 @@ MonoBehaviour:
   missileAction: {fileID: -6020284518709776834, guid: 04cc15706f63de54b99fedd88a3cbe71,
     type: 3}
   projectileSpawnPoint: {fileID: 2138281253792839802}
+  hurtAudioClip: {fileID: 8300000, guid: a16b9017a7a3b744fbd8ab26d0a816c3, type: 3}
+  deathAudioClip: {fileID: 8300000, guid: d9f613ad6fc2e5648b734dade33baf01, type: 3}
 --- !u!143 &6318150114387481108
 CharacterController:
   m_ObjectHideFlags: 0
